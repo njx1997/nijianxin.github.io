@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倪建新 - 个人名片</title>
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- 优化字体加载 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 仅保留必要的Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent-color: #ec4899;
+            --background: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --mobile-nav-height: 60px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            padding-bottom: calc(20px + var(--mobile-nav-height));
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* 动态背景 */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-color), transparent);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -80px;
+            left: -80px;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* 主卡片 */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            overflow: hidden;
+            min-height: 500px;
+            animation: cardEntrance 0.8s ease-out;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 左侧风格化面板 */
+        .left-panel {
+            flex: 0 0 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .style-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 1.8rem;
+            opacity: 0.3;
+            animation: floatElement 8s ease-in-out infinite;
+        }
+
+        .el-1 { top: 20%; left: 20%; animation-delay: 0s; }
+        .el-2 { top: 60%; left: 80%; animation-delay: 2s; }
+        .el-3 { top: 80%; left: 30%; animation-delay: 4s; }
+        .el-4 { top: 40%; left: 70%; animation-delay: 6s; }
+
+        @keyframes floatElement {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translateY(-20px) rotate(120deg) scale(1.2);
+            }
+            66% {
+                transform: translateY(10px) rotate(240deg) scale(0.8);
+            }
+        }
+
+        .basic-info {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .name-title {
+            margin-bottom: 25px;
+            animation: slideUp 0.6s ease-out 0.3s both;
+        }
+
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .personal-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            animation: slideUp 0.6s ease-out 0.5s both;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .quote {
+            font-style: italic;
+            opacity: 0.9;
+            line-height: 1.5;
+            border-left: 2px solid rgba(255, 255, 255, 0.5);
+            padding-left: 12px;
+            font-size: 0.9rem;
+            animation: slideUp 0.6s ease-out 0.7s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 右侧面板 */
+        .right-panel {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* 隐藏桌面端标签在移动端 */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f1f5f9;
+            color: var(--text-primary);
+        }
+
+        .tab-content {
+            display: none;
+            flex: 1;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 联系信息样式 */
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(3px);
+            box-shadow: 0 3px 10px rgba(236, 72, 153, 0.1);
+        }
+
+        .contact-item i {
+            width: 18px;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        .contact-item div {
+            flex: 1;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .value {
+            display: block;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .contact-tip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 10px;
+            color: #0369a1;
+            font-size: 0.8rem;
+        }
+
+        .contact-tip i {
+            color: var(--accent-color);
+        }
+
+        /* 关于我样式 */
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .about-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .about-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h4 {
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            font-size: 0.85rem;
+        }
+
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-link:hover {
+            gap: 8px;
+            text-decoration: underline;
+        }
+
+        /* 人生三观样式 */
+        .values-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .value-card {
+            padding: 20px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .value-card h4 {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* 社交媒体链接 */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        .social-link.company { background: #6366f1; }
+        .social-link.qzone { background: #12b7f5; }
+        .social-link.yuque { background: #00c853; }
+        .social-link.douban { background: #2e963d; }
+        .social-link.netease { background: #e60026; }
+        .social-link.steam { background: #000; }
+
+        /* 通知 */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* 移动端底部导航 */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            height: var(--mobile-nav-height);
+            border-top: 1px solid #e2e8f0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0 10px;
+        }
+
+        .mobile-tab-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 80px;
+        }
+
+        .mobile-tab-btn.active {
+            color: var(--accent-color);
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        .mobile-tab-btn i {
+            font-size: 1.2rem;
+        }
+
+        .mobile-tab-btn span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* 自定义SVG图标样式 */
+        .svg-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                padding-bottom: calc(10px + var(--mobile-nav-height));
+            }
+
+            .card {
+                flex-direction: column;
+                min-height: auto;
+                border-radius: 15px;
+            }
+
+            .left-panel {
+                flex: none;
+                padding: 25px 20px;
+                min-height: 200px;
+            }
+
+            .right-panel {
+                padding: 20px;
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .name {
+                font-size: 1.6rem;
+            }
+
+            .title {
+                font-size: 0.9rem;
+            }
+
+            .tabs {
+                display: none; /* 在移动端隐藏桌面标签 */
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .about-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .about-icon {
+                margin-top: 0;
+            }
+
+            .contact-methods {
+                gap: 10px;
+            }
+
+            .contact-item {
+                padding: 12px;
+            }
+
+            .social-links {
+                gap: 8px;
+            }
+
+            .social-link {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-panel {
+                min-height: 180px;
+                padding: 20px 15px;
+            }
+
+            .right-panel {
+                padding: 15px;
+            }
+
+            .name {
+                font-size: 1.4rem;
+            }
+
+            .tag {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+
+            .quote {
+                font-size: 0.8rem;
+            }
+
+            .about-section,
+            .values-section {
+                gap: 12px;
+            }
+
+            .about-item,
+            .value-card {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 动态背景 -->
+        <div class="background-animation">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- 主名片卡片 -->
+        <div class="card">
+            <!-- 左侧风格化区域 -->
+            <div class="left-panel">
+                <div class="style-background">
+                    <div class="floating-element el-1">🎬</div>
+                    <div class="floating-element el-2">💻</div>
+                    <div class="floating-element el-3">🎵</div>
+                    <div class="floating-element el-4">🎮</div>
+                </div>
+
+                <div class="basic-info">
+                    <div class="name-title">
+                        <h1 class="name">倪建新</h1>
+                        <p class="title">真诚的95后</p>
+                    </div>
+
+                    <div class="personal-tags">
+                        <span class="tag">INFJ</span>
+                        <span class="tag">社恐分子</span>
+                    </div>
+
+                    <div class="quote">
+                        <p>"目光放长远"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧内容区 -->
+            <div class="right-panel">
+                <!-- 导航标签 -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="contact">联系我</button>
+                    <button class="tab-btn" data-tab="about">关于我</button>
+                    <button class="tab-btn" data-tab="values">人生三观</button>
+                </div>
+
+                <!-- 联系我标签内容 -->
+                <div class="tab-content active" id="contact">
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <!-- 使用SVG图标替换Font Awesome -->
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                            </svg>
+                            <div>
+                                <span class="label">微信</span>
+                                <span class="value">Njx_Sagittarius</span>
+                            </div>
+                            <button class="copy-btn" data-text="Njx_Sagittarius">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.25 15.5c-1.36 0-2.45-.71-3.19-1.5H12c-1.11 0-2-.89-2-2s.89-2 2-2h2v-2h-4c-.55 0-1 .45-1 1s.45 1 1 1h2c1.1 0 2 .9 2 2s-.9 2-2 2h-2c-1.1 0-2 .9-2 2s.9 2 2 2h2.06c.74.79 1.83 1.5 3.19 1.5 1.99 0 3.61-1.62 3.61-3.61s-1.62-3.61-3.61-3.61z"/>
+                            </svg>
+                            <div>
+                                <span class="label">QQ</span>
+                                <span class="value">2643385183</span>
+                            </div>
+                            <button class="copy-btn" data-text="2643385183">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <div>
+                                <span class="label">电话</span>
+                                <span class="value">15308449530</span>
+                            </div>
+                            <button class="copy-btn" data-text="15308449530">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <div>
+                                <span class="label">邮箱</span>
+                                <span class="value">2643385183@qq.com</span>
+                            </div>
+                            <button class="copy-btn" data-text="2643385183@qq.com">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <div>
+                                <span class="label">城市</span>
+                                <span class="value">浙江 ·杭州</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 关于我标签内容 -->
+                <div class="tab-content" id="about">
+                    <div class="about-section">
+                        <div class="about-item">
+                            <div class="about-icon">💼</div>
+                            <div class="about-content">
+                                <h4>我的工作</h4>
+                                <p>粒子加速器运维工程师</p>
+                                <a href="https://www.cashim.com.cn/index.php?m=content&c=index&a=lists&catid=222" class="profile-link" target="_blank">
+                                    <i class="fas fa-building"></i>
+                                    了解我的公司
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">📸</div>
+                            <div class="about-content">
+                                <h4>我的日常</h4>
+                                <p>我没什么日常，除了日常。</p>
+                                <a href="https://user.qzone.qq.com/2643385183" class="profile-link" target="_blank">
+                                    <i class="fab fa-qq"></i>
+                                    我的QQ空间
+                                </a>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <div class="about-icon">📝</div>
+                            <div class="about-content">
+                                <h4>我的文字</h4>
+                                <p>想象虽已搁浅，笔记从未停止</p>
+                                <a href="https://www.yuque.com/nijianxin/njx" class="profile-link" target="_blank">
+                                    <i class="fas fa-pen-fancy"></i>
+                                    阅读我的作品
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">🎬</div>
+                            <div class="about-content">
+                                <h4>我的电影</h4>
+                                <p>领略不同人生，但最喜欢丧丧的电影</p>
+                                <a href="https://www.douban.com/people/153366683/?_i=2610865zBaZomW" class="profile-link" target="_blank">
+                                    <i class="fab fa-douban"></i>
+                                    我的豆瓣主页
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">🎵</div>
+                            <div class="about-content">
+                                <h4>我的音乐</h4>
+                                <p>五音不全，但我还是喜欢听音乐。</p>
+                                <a href="https://music.163.com/#/user/home?id=480224453" class="profile-link" target="_blank">
+                                    <i class="fas fa-music"></i>
+                                    我的网易云歌单
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="about-item">
+                            <div class="about-icon">🎮</div>
+                            <div class="about-content">
+                                <h4>我的游戏</h4>
+                                <p>又菜又爱玩</p>
+                                <a href="https://steamcommunity.com/profiles/76561198444064627/" class="profile-link" target="_blank">
+                                    <i class="fab fa-steam"></i>
+                                    我的Steam主页
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人生三观标签内容 -->
+                <div class="tab-content" id="values">
+                    <div class="values-section">
+                        <div class="value-card">
+                            <div class="value-icon">🌍</div>
+                            <h4>世界观</h4>
+                            <p>天下大同。</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">💫</div>
+                            <h4>人生观</h4>
+                            <p>乐观的悲观主义者。</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">❤️</div>
+                            <h4>价值观</h4>
+                            <p>真诚！真诚！还是***真诚！</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 社交媒体链接 -->
+                <div class="social-links">
+                    <a href="https://www.cashim.com.cn/index.php?m=content&c=index&a=lists&catid=222" class="social-link company" target="_blank" title="公司主页">
+                        <i class="fas fa-building"></i>
+                    </a>
+                    <a href="https://user.qzone.qq.com/2643385183" class="social-link qzone" target="_blank" title="QQ空间">
+                        <i class="fab fa-qq"></i>
+                    </a>
+                    <a href="https://www.yuque.com/nijianxin/njx" class="social-link yuque" target="_blank" title="语雀文档">
+                        <i class="fas fa-pen-fancy"></i>
+                    </a>
+                    <a href="https://www.douban.com/people/153366683/?_i=2610865zBaZomW" class="social-link douban" target="_blank" title="豆瓣">
+                        <i class="fab fa-douban"></i>
+                    </a>
+                    <a href="https://music.163.com/#/user/home?id=480224453" class="social-link netease" target="_blank" title="网易云音乐">
+                        <i class="fas fa-music"></i>
+                    </a>
+                    <a href="https://steamcommunity.com/profiles/76561198444064627/" class="social-link steam" target="_blank" title="Steam">
+                        <i class="fab fa-steam"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 浮动通知 -->
+        <div class="notification" id="notification">
+            已复制到剪贴板！
+        </div>
+
+        <!-- 移动端底部导航 -->
+        <div class="mobile-nav">
+            <button class="mobile-tab-btn active" data-tab="contact">
+                <i class="fas fa-comments"></i>
+                <span>联系</span>
+            </button>
+            <button class="mobile-tab-btn" data-tab="about">
+                <i class="fas fa-user"></i>
+                <span>关于</span>
+            </button>
+            <button class="mobile-tab-btn" data-tab="values">
+                <i class="fas fa-heart"></i>
+                <span>三观</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 桌面端标签切换
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // 移动端标签切换
+            const mobileTabBtns = document.querySelectorAll('.mobile-tab-btn');
+
+            /**
+             * 切换标签页功能
+             * @param {string} tabId - 要切换到的标签页ID
+             */
+            function switchTab(tabId) {
+                // 移除所有active类
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                mobileTabBtns.forEach(b => b.classList.remove('active'));
+
+                // 添加active类到当前标签
+                const activeTabBtn = document.querySelector(`[data-tab="${tabId}"]`);
+                const activeMobileTabBtn = document.querySelector(`.mobile-tab-btn[data-tab="${tabId}"]`);
+
+                if (activeTabBtn) activeTabBtn.classList.add('active');
+                if (activeMobileTabBtn) activeMobileTabBtn.classList.add('active');
+
+                document.getElementById(tabId).classList.add('active');
+            }
+
+            // 桌面端标签事件
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // 移动端标签事件
+            mobileTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    switchTab(tabId);
+
+                    // 滚动到顶部
+                    document.querySelector('.right-panel').scrollTop = 0;
+                });
+            });
+
+            // 复制功能
+            const copyBtns = document.querySelectorAll('.copy-btn');
+            const notification = document.getElementById('notification');
+
+            copyBtns.forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const textToCopy = btn.getAttribute('data-text');
+
+                    try {
+                        await navigator.clipboard.writeText(textToCopy);
+                        showNotification('已复制到剪贴板！');
+                    } catch (err) {
+                        console.error('复制失败:', err);
+                        showNotification('复制失败，请手动复制');
+                    }
+                });
+            });
+
+            /**
+             * 显示通知消息
+             * @param {string} message - 要显示的消息内容
+             */
+            function showNotification(message) {
+                notification.textContent = message;
+                notification.classList.add('show');
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }
+
+            // 为所有外部链接添加图标
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                if (!link.querySelector('.fa-external-link-alt')) {
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-external-link-alt';
+                    icon.style.cssText = 'font-size: 0.7em; margin-left: 4px; opacity: 0.7;';
+                    link.appendChild(icon);
+                }
+            });
+
+            // 移动端触摸优化
+            let startY;
+            const rightPanel = document.querySelector('.right-panel');
+
+            rightPanel.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+
+            // 防止滚动传播到body
+            rightPanel.addEventListener('touchmove', (e) => {
+                const isScrolling = rightPanel.scrollHeight > rightPanel.clientHeight;
+                if (isScrolling) {
+                    e.stopPropagation();
+                }
+            }, { passive: true });
+
+            // 初始化显示第一个标签
+            switchTab('contact');
+        });
+    </script>
+</body>
+</html>
